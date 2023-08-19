@@ -4,12 +4,16 @@ const moment =require('moment');
 const getAllTransection= async (req,res)=>{
     try {
         const {filter} =req.body
-        const transection =await transectionModel.find({
-            date:{
-                $gt : moment().subtract(Number(filter),'d').toDate()
-            },
-            userid: req.body.userid,
-        });
+        let params={};
+        if(!isNaN (filter)) {
+params['date']={
+    $gt : moment().subtract(Number(filter),'d').toDate()
+}
+        }
+        if(req.body.userid){
+            params['userid']=req.body.userid
+        }
+        const transection =await transectionModel.find(params);
         res.status(200).json(transection);
 
     }catch(err){
