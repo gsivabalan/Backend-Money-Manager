@@ -13,6 +13,7 @@ params['date']={
         if(req.body.userid){
             params['userid']=req.body.userid
         }
+        console.log(params);
         const transection =await transectionModel.find(params);
         res.status(200).json(transection);
 
