@@ -28,8 +28,8 @@ const transectionSchema = new mongoose.Schema({
         type: Date,
         required: [true, 'date is required']
     }
-}, { timestamps: true })
+}, { timestamps: true, collection:'transections' })
 
-const transectionModel = mongoose.model('transection', transectionSchema)
+const transectionModel = mongoose.model('transections', transectionSchema)
 
 module.exports= transectionModel;
