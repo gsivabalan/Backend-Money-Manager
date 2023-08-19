@@ -7,7 +7,7 @@ const getAllTransection= async (req,res)=>{
         let params={};
         if(!isNaN (filter)) {
 params['date']={
-    $gt : moment().subtract(Number(filter),'d').toDate()
+    $lte : moment().subtract(Number(filter),'d').toDate()
 }
         }
         if(req.body.userid){
